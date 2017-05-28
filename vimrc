@@ -15,7 +15,11 @@
 :set autoread " 文件自动检测外部更改
 :set wildignorecase " 文件名补全忽略大小写
 :set nocompatible " 取消vi兼容模式
+filetype plugin on " 允许使用插件
+set rtp+=~/.vim/bundle/nerdtree
 
 " 优化上下逻辑
 :noremap j gj
 :noremap k gk
+" 打开文件管理器
+:map <F2> :NERDTreeToggle<CR>
