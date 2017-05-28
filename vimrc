@@ -1,4 +1,4 @@
-:set number " 显示行号
+:set nonumber " 不显示行号
 :set shiftwidth=4 " 缩进长度
 :set tabstop=4 " tab长度
 ":set softtabstop=8 " tab替换成8个空格
@@ -15,3 +15,7 @@
 :set autoread " 文件自动检测外部更改
 :set wildignorecase " 文件名补全忽略大小写
 :set nocompatible " 取消vi兼容模式
+
+" 优化上下逻辑
+:noremap j gj
+:noremap k gk
