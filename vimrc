@@ -1,4 +1,4 @@
-:set nocompatible " 取消vi兼容模式,这个放前面,要不会让后面有些设置失效,比如showcmd,和NERDTRee插件的小问题
+set nocompatible " 取消vi兼容模式,这个放前面,要不会让后面有些设置失效,比如showcmd,和NERDTRee插件的小问题
 
 " vundle 环境设置
 filetype off
@@ -40,47 +40,60 @@ filetype plugin indent on
 
 " 优化设置
 syntax on " 语法高亮
-:set nonumber " 不显示行号
-:set shiftwidth=4 " 缩进长度
-:set tabstop=4 " tab长度
-":set softtabstop=4 " tab替换成4个空格
-:set autoindent " 自动缩进
-":set list " 显示tab
-:set ruler " 显示光标位置
-:set showcmd " 显示命令
-"let g:molokai_original = 1
-let g:rehash256 = 1
-:set background=dark
+set wrap " 回绕
+set nonumber " 不显示行号
+set shiftwidth=4 " 缩进长度
+set tabstop=4 " tab长度
+"set softtabstop=4 " tab替换成4个空格
+set autoindent " 自动缩进
+"set list " 显示tab
+set ruler " 显示光标位置
+set showcmd " 显示命令
+"let gmolokai_original = 1
+let grehash256 = 1
+set background=dark
 "colorscheme solarized
 colorscheme molokai
 "colorscheme phd
-:set hlsearch " 高亮搜索
-:set incsearch " 实时搜索
-:set scrolloff=5 " 光标上下行数
-":set cursorline " 高亮当前行
-:set nobackup " 取消备份
-:set autoread " 文件自动检测外部更改
-:set wildignorecase " 文件名补全忽略大小写
+set hlsearch " 高亮搜索
+set incsearch " 实时搜索
+set scrolloff=5 " 光标上下行数
+"set cursorline " 高亮当前行
+set nobackup " 取消备份
+set autoread " 文件自动检测外部更改
+set wildignorecase " 文件名补全忽略大小写
 
 
 " 按键映射
 " 优化上下逻辑
-:noremap j gj
-:noremap k gk
+noremap j gj
+noremap k gk
 " 打开文件管理器
-:map <F2> :NERDTreeToggle<CR>
+map <F2> :NERDTreeToggle<CR>
 
+" 自动命令检查
+if !exists("s:my_script")
+	let s:my_script = 1
+	" 保存会话并退出
+	command MQ mksession! | qall
+	function MksQuit()
+		mksession!
+		qall
+	endfunction
 
-" 自动命令
-" 更改配置立即生效
-autocmd BufWritePost $MYVIMRC source $MYVIMRC
+	function Myecho()
+		echo 1
+	endfunction
+	" 更改配置立即生效
+	autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
-" 方便定位当前窗口及分辨是否处于插入模式
-" 进入窗口高亮当前行
-autocmd WinEnter * set cursorline
-" 离开窗口取消高亮
-autocmd WinLeave * set nocursorline
-" 插入模式取消高亮
-autocmd InsertEnter * set nocursorline
-" 离开插入模式恢复高亮
-autocmd InsertLeave * set cursorline
+	" 方便定位当前窗口及分辨是否处于插入模式
+	" 进入窗口高亮当前行
+	autocmd WinEnter * set cursorline
+	" 离开窗口取消高亮
+	autocmd WinLeave * set nocursorline
+	" 插入模式取消高亮
+	autocmd InsertEnter * set nocursorline
+	" 离开插入模式恢复高亮
+	autocmd InsertLeave * set cursorline
+endif
