@@ -36,7 +36,7 @@ Plugin 'scrooloose/nerdtree'
 " 插件列表结束
 call vundle#end()
 filetype plugin indent on
-
+" PluginInstall 安装插件
 
 " 优化设置
 syntax on " 语法高亮
