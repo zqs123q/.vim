@@ -61,6 +61,7 @@ set scrolloff=5 " 光标上下行数
 set nobackup " 取消备份
 set autoread " 文件自动检测外部更改
 set wildignorecase " 文件名补全忽略大小写
+set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
 
 
 " 按键映射
