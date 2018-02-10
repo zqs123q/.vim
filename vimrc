@@ -100,3 +100,8 @@ if !exists("s:my_script")
     " 离开插入模式恢复高亮
     autocmd InsertLeave * set cursorline
 endif
+
+" 插入模式优化
+inoremap ( ()U<Left>
+inoremap { {}U<Left>
+inoremap [ []U<Left>
