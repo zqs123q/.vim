@@ -105,3 +105,6 @@ endif
 inoremap ( ()U<Left>
 inoremap { {}U<Left>
 inoremap [ []U<Left>
+
+" 可视模式优化
+vnoremap p pgvygvv
