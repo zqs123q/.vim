@@ -65,10 +65,22 @@ set wildignorecase " 文件名补全忽略大小写
 set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb2312,gb18030,cp936,latin1
 
 
-" 按键映射
+" 按键绑定
+
+" 普通模式
 " 优化上下逻辑
 noremap j gj
 noremap k gk
+
+" 插入模式
+inoremap ( ()U<Left>
+inoremap { {}U<Left>
+inoremap [ []U<Left>
+set backspace+=start
+
+" 可视模式
+vnoremap p pgvygvv
+
 " 打开文件管理器
 map <F2> :NERDTreeToggle<CR>
 
@@ -85,6 +97,17 @@ if !exists("s:my_script")
     function Myecho()
         echo 1
     endfunction
+
+    " 优化补全
+    function! CleverTab()
+        if strpart(getline('.'), 0, col('.')-1) =~ '^\s*$'
+            return "\<Tab>"
+        else
+            return "\<C-N>"
+        endif
+    endfunction
+    inoremap <Tab> <C-R>=CleverTab()<CR>
+
     " 更改配置立即生效
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
     " 空格代替tab
@@ -101,11 +124,3 @@ if !exists("s:my_script")
     " 离开插入模式恢复高亮
     autocmd InsertLeave * set cursorline
 endif
-
-" 插入模式优化
-inoremap ( ()U<Left>
-inoremap { {}U<Left>
-inoremap [ []U<Left>
-
-" 可视模式优化
-vnoremap p pgvygvv
