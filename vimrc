@@ -74,9 +74,9 @@ noremap j gj
 noremap k gk
 
 " 插入模式
-inoremap ( ()U<Left>
-inoremap { {}U<Left>
-inoremap [ []U<Left>
+" inoremap ( ()U<Left>
+" inoremap { {}U<Left>
+" inoremap [ []U<Left>
 set backspace+=start
 
 " 可视模式
